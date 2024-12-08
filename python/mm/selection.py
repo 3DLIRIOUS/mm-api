@@ -39,6 +39,12 @@ def select_inside_sphere(remote, sphere_center, sphere_radius):
     cmd.AppendSelectCommand_InsideSphere( sphere_center[0],sphere_center[1],sphere_center[2], sphere_radius )
     remote.runCommand(cmd)    
 
+def select_inside_box(remote, minX, maxX, minY, maxY, minZ, maxZ):
+    """Select the faces inside the box with given xyz min and max. Requires active Selection Tool."""
+    cmd = mmapi.StoredCommands()
+    cmd.AppendSelectCommand_InsideBox( minX, maxX, minY, maxY, minZ, maxZ )
+    remote.runCommand(cmd)
+
 
 def select_hole(remote, hole_index, mode = 0):
     """Select the faces which have a facegroup ID in groups_list"""
